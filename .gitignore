@@ -4,3 +4,8 @@
 
 /BookStore/.vs/BookStore
 /BookStore/BookStoreWebApp/obj
+*.bin
+/BookStore/BookStoreWebApp/bin/Debug/net8.0/BookStoreWebApp.dll
+/BookStore/BookStoreWebApp/bin/Debug/net8.0/BookStoreWebApp.exe
+/BookStore/BookStoreWebApp/bin/Debug/net8.0/BookStoreWebApp.pdb
+/BookStore/BookStoreWebApp/bin/Debug/net8.0/appsettings.json
