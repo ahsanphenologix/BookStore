@@ -1,0 +1,66 @@
+﻿@model BookViewModel
+
+<div class="container mt-4">
+    <h1 class="mb-4">Edit Book</h1>
+
+    <!-- Display validation errors -->
+    @if (ViewData.ModelState.Values.Any(v => v.Errors.Count > 0))
+    {
+        <div class="alert alert-danger">
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+
+    <!-- Edit form -->
+    @using (Html.BeginForm("Edit", "Books", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description, new { @class = "control-label" })
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "3" })
+            @Html.ValidationMessageFor(m => m.Description)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.AuthorName, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.AuthorName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.AuthorName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Publish, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Publish, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Publish)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Category, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Category)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Edition, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Edition, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Edition)
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+        </div>
+    }
+</div>

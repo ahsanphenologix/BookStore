@@ -1,7 +1,22 @@
+using BookStore.AppDataConnections;
+using BookStore.Interfaces;
+using BookStore.Mappers;
+using BookStore.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+var configuration = builder.Configuration;
+
+// Configure database connection using Entity Framework Core
+
+builder.Services.AddScoped<IBookRepository, BookStoreRepository>();
+builder.Services.AddScoped<IDapperDbConnection, DapperDbConnection>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 

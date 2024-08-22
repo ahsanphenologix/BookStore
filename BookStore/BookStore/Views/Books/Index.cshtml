@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BookViewModel> 
+
+<!-- Define the model type for the view -->
+
+<div class="container mt-4">
+    <h1 class="mb-4">Books List</h1>
+
+    <a href="@Url.Action("Insert")" class="btn btn-primary mb-3">Create New Book</a>
+
+    <!-- Check if there are any books -->
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Author Name</th>
+                    <th>Publish</th>
+                    <th>Category</th>
+                    <th>Edition</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterate through the list of books and display each one in a row -->
+                @foreach (var book in Model)
+                {
+                    <tr>
+                        <td>@book.Id</td>
+                        <td>@book.Title</td>
+                        <td>@book.Description</td>
+                        <td>@book.AuthorName</td>
+                        <td>@book.Publish</td>
+                        <td>@book.Category</td>
+                        <td>@book.Edition</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = book.Id })" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="@Url.Action("Delete", new { id = book.Id })" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this book?');">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="alert alert-info">No books available.</p>
+    }
+</div>
+
+
