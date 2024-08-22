@@ -25,4 +25,4 @@ jobs:
     - name: Build
       run: dotnet build ./BookStore/BookStore/BookStore.csproj
     - name: Publish
-      run: dotnet publish 
+      run: dotnet publish ./BookStore/
