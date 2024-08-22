@@ -23,7 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ./BookStore/
     - name: Build
-      run: cd ./BookStore/BookStore/ |
-        dotnet build BookStore.csproj
+      run: dotnet build ./BookStore/BookStore/BookStore.csproj
     - name: Test
       run: dotnet test --no-build --verbosity normal
